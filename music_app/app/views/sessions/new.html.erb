@@ -1,0 +1,23 @@
+<h1>MusicHead</h1>
+
+<h3>Login to your account</h3>
+
+<form action=<%=session_url%> method="POST">
+  <input type="hidden"
+    name="authenticity_token"
+    value="<%=form_authenticity_token%>" >
+
+  <p><label for="user_email">Email</label>
+    <input name="user[email]"
+    id="user_email"></p>
+
+  <p><label for="user_password">Password</label>
+    <input type="password"
+    name="user[password]"
+    id="user_password"></p>
+
+  <input type="submit" value="Log in!">
+</form>
+
+<br>
+<%= link_to "Or go to sign up page", new_user_url%>

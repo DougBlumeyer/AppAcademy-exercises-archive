@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MusicHead</title>
+  <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <%= error %>
+      <br>
+    <% end %>
+  <% end %>
+
+  <% if flash[:notice] %>
+  <% flash[:notice].each do |notice| %>
+  <%= notice %>
+  <br>
+  <% end %>
+  <% end %>
+
+  <% if logged_in? %>
+  <%= "Logged in as #{current_user.email}" %>
+  <%= button_to "Logout", session_url, method: :delete %>
+  <% end %>
+
+<% puts "session[:session_token]: #{session[:session_token]}"%>
+<%= yield %>
+
+</body>
+</html>

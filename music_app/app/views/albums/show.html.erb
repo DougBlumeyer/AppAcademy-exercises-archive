@@ -1,0 +1,24 @@
+<h1><%= @album.name %></h1>
+
+<br> Band: <%= link_to "#{@band.name}", band_url(@band) %>
+<br> Type: <%= @album.recording_type %>
+
+<% unless @tracks.nil? || @tracks.empty? %>
+<br> Tracks:
+<ul>
+  <% @tracks.each do |track| %>
+  <li><%= link_to "#{track.name}", track_url(track) %></li>
+  <% end %>
+</ul>
+<% end %>
+<br>
+<%= "No Tracks Yet!" if @tracks.nil? || @tracks.empty? %>
+
+<br>
+<%= link_to "Add a new track for this album >>", new_album_track_url(@album) %>
+<br>
+<%= link_to "<< Back to #{@band.name}'s main page", band_url(@band) %>
+<br>
+<%= link_to "Edit this album", edit_album_url(@album) %>
+<br>
+<%= button_to "Delete this album", album_url(@album), method: :delete %>

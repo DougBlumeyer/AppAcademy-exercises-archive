@@ -1,0 +1,23 @@
+<h1><%= @track.name %></h1>
+
+<br>
+Album: <%= link_to "#{@album.name}", album_url(@album) %>
+<br>
+Category: <%= @track.category %>
+<br>
+Lyrics: <%= ugly_lyrics(@track.lyrics) %>
+<br>
+Notes:
+<br>
+<% @track.notes.each do |note| %>
+  <%= render 'notes/note', note: note %>
+<% end %>
+
+<%= render 'notes/form' %>
+
+<br>
+<%= link_to "<< Back to #{@album.name}'s track listing", album_url(@album) %>
+<br>
+<%= link_to "Edit this track", edit_track_url(@track) %>
+<br>
+<%= button_to "Delete this track", track_url(@track), method: :delete %>

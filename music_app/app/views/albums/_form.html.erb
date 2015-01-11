@@ -1,0 +1,52 @@
+<% form_action = ( @album.persisted? ? album_url(@album) : albums_url ) %>
+<% submit_message = ( @album.persisted? ? "Update Album" : "Create Album" ) %>
+<% form_method = ( @album.persisted? ? "PATCH" : "POST" ) %>
+
+<form action="<%= form_action %>" method="POST">
+  <input type="hidden"
+    name="authenticity_token"
+    value="<%=form_authenticity_token%>">
+
+  <input type="hidden"
+    name="_method"
+    value="<%=form_method%>">
+
+  <br>
+  <label for="album_band">Band</label>
+  <select id="album_band" name="album[band_id]">
+    <% @bands.each do |band| %>
+    <option
+    value= <%= band.id %>
+    <%= "selected" if band.id == @band.id %>
+    >
+    <%=band.name%>
+  </option>
+  <% end %>
+</select>
+
+<br>
+<label for="album_name">Title</label>
+<input id="album_name" name="album[name]" value="<%=@album.name%>">
+
+<br>
+
+<% Album::RECORDING_TYPES.each do |recording_type| %>
+<input type="radio"
+id="album_recording_type_<%=recording_type%>"
+name="album[recording_type]"
+value="<%=recording_type%>"
+<% if @album.persisted? %>
+<%= "checked" if recording_type == @album.recording_type %>
+<% else %>
+<%= "checked" if recording_type == "studio" %>
+<% end %>
+>
+<label for="album_recording_type_<%=recording_type%>"><%=recording_type%></label>
+
+<% end %>
+
+<input type="submit" value="<%=submit_message%>">
+</form>
+
+<br>
+<%= link_to "<< Back to #{@band.name}'s main page", band_url(@band) %>

@@ -1,0 +1,20 @@
+<h1><%= @band.name %></h1>
+
+<% unless @albums.nil? || @albums.empty? %>
+<br> <%= "Albums:" %>
+<ul>
+  <% @albums.each do |album| %>
+  <li><%= link_to "#{album.name}", album_url(album) %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= "No albums yet!" if @albums.nil? || @albums.empty? %>
+<br>
+<%= link_to "Create a new album for this band >>", new_band_album_url(@band) %>
+<br>
+<%= link_to "<< Return to list of all bands", bands_url %>
+<br>
+<%= link_to "Edit this band", edit_band_url(@band) %>
+<br>
+<%= button_to "Delete this band", band_url(@band), method: :delete %>
