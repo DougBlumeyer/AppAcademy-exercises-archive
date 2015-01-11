@@ -1,0 +1,12 @@
+<h1><%=@sub.title%></h1>
+<h4>Moderated by: <%=@sub.moderator.email%></h4>
+<%=@sub.description%>
+
+<% if logged_in? && @sub.moderator_id == current_user.id %>
+<br>
+<%= link_to "Edit this sub", edit_sub_url(@sub) %>
+<% end %>
+<br>
+<%= link_to "<< Back to subs list", subs_url %>
+<br>
+<%= link_to "Post on this sub", new_sub_post_url %>

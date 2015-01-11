@@ -1,0 +1,6 @@
+<h1>Login to your account</h1>
+<%=render "shared/form", user: @user, logging_in: true %>
+
+<%= link_to "or go to sign up page", new_user_url %>
+<br>
+<%= link_to "See All Subs", subs_url %>
