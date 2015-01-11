@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AuthDemo</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-header">
+  <div class="container">
+    <% if logged_in? %>
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+          Hamburger
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<%= static_pages_home_url %>">Home</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<%= static_pages_contact_url %>">Contact</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<%= static_pages_about_url %>">About</a></li>
+        </ul>
+      </div>
+    <% else %>
+      <a href="<%= new_session_url %>">Log In</a>
+      <a href="<%= new_user_url %>">Sign Up</a>
+    <% end %>
+  </div>
+</nav>
+
+
+
+
+<br>
+<br>
+<br>
+<container>
+<%= yield %>
+</container>
+
+</body>
+</html>
