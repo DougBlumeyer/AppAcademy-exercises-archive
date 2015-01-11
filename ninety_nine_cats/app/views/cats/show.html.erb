@@ -1,0 +1,46 @@
+<h1><%=@cat.name%></h1>
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Value</th>
+  </tr>
+  <% @cat.attributes.drop(1).each do |(attr, value)| %>
+  <tr>
+    <td><%= attr %></td>
+    <td><%= value %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h3>Existing Requests</h3>
+<table>
+  <tr>
+    <th>Req Id</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Status</th>
+    <th>Approve</th>
+    <th>Deny</th>
+    <th>Requester</th>
+  </tr>
+  <% @crrs.each do |crr| %>
+  <tr>
+    <td><%= crr.id %></td>
+    <td><%= crr.start_date %></td>
+    <td><%= crr.end_date %></td>
+    <td><%= crr.status %></td>
+    <td><% if crr.status == "PENDING" && user_owns_cat? %>
+      <%= button_to "Approve", approve_cat_rental_request_url(crr), method: :post %>
+      <%end%></td>
+    <td><% if crr.status == "PENDING" && user_owns_cat? %>
+      <%= button_to "Deny", deny_cat_rental_request_url(crr), method: :post %>
+      <%end%></td>
+    <td><%= User.find(crr.user_id).username %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p><a href="<%=edit_cat_url(@cat) %>">Edit this cat</a></p>
+<p><a href="<%=new_cat_rental_request_url %>">Request a cat now!</a></p>
+<p><a href="<%=cats_url%>">Back to cats index</a></p>

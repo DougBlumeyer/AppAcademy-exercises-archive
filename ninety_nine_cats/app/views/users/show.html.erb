@@ -1,0 +1,9 @@
+<h1><%= @user.username %></h1>
+
+<p>Hello, dear user! Here are your cats:</p>
+
+<ul>
+  <% @cats.each do |cat| %>
+  <li> <a href="<%= cat_url(cat) %>"> <%= cat.name %> </a></li>
+  <% end %>
+</ul>
