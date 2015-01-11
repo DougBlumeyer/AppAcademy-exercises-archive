@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :users, only: [:new, :create, :show] do
+  resources :users, only: [:new, :create, :show, :index] do
     collection do
       get 'activate'
+    end
+    member do
+      post 'adminify'
+      post 'disadminify'
     end
   end
   resource :session, only: [:new, :create, :destroy]

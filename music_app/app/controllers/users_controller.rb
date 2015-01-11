@@ -37,6 +37,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def adminify
+    @user = User.find(params[:id])
+    @user.admin = true
+    @user.save!
+    redirect_to users_url
+  end
+
+  def disadminify
+    @user = User.find(params[:id])
+    @user.admin = false
+    @user.save!
+    redirect_to users_url
+  end
+
+  def index
+    redirect_to bands_url unless current_user.admin
+    @users = User.all
+  end
+
   private
 
   def user_params

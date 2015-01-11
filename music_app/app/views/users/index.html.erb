@@ -1,0 +1,9 @@
+<% @users.each do |user| %>
+  <%= user.email %>
+  <% if user.admin %>
+    <%= button_to "Remove Admin", disadminify_user_url(user) %>
+  <% else %>
+    <%= button_to "Make Admin", adminify_user_url(user) %>
+  <% end %>
+  <br>
+<% end %>

@@ -22,7 +22,7 @@ class NotesController < ApplicationController
 
   def only_note_author!
     @note = Note.find(params[:id])
-    render json: "Forbidden", status: :forbidden if @note.user_id != current_user.id
+    render json: "Forbidden", status: :forbidden if @note.user_id != current_user.id && !current_user.admin
   end
 
   private
