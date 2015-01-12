@@ -14,10 +14,14 @@ Associated Subforums:
 <% end %>
 <br>
 Comments:
-<% @post.comments.each do |comment| %>
+<ul>
+<% @all_comments.each do |comment| %>
   <br>
-  <%= comment.content %>, comment by <%= comment.author.email %>
+  <% if comment.parent_comment_id.nil? %>
+    <li><%= render 'comment', comment: comment %></li>
+  <% end %>
 <% end %>
+</ul>
 <% if @post.author == current_user %>
 <%= button_to "Edit Post", edit_post_url(@post), method: :get %>
 <% end %>

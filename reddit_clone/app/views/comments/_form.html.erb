@@ -7,7 +7,12 @@
   <input name="comment[content]">
   </label>
 
-  <input type="hidden" name="comment[post_id]" value=<%= @post.id %> >
+  <input type="hidden"
+  name="comment[parent_comment_id]"
+  value=<%= @post.nil? ? @comment.id : nil %> >
+
+  <input type="hidden" name="comment[post_id]"
+    value=<%= @post.nil? ? @comment.post.id : @post.id %> >
 
   <input type="submit" value="Add Comment">
 

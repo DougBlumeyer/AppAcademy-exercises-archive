@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   def show
     #fail
     @post = Post.find(params[:id])
+    @all_comments = @post.comments.includes(:author)
   end
 
   def edit

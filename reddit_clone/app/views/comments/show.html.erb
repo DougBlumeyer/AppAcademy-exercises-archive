@@ -1,0 +1,13 @@
+<h1><%=@comment.content%></h1>
+
+Comments on this comment:
+<br>
+<% @comment.child_comments.each do |child| %>
+  <br>
+  <%= link_to child.content, comment_url(child) %>, posted by <%= child.author.email %>
+<% end %>
+<br>
+
+<%= link_to "<< Return to #{@comment.post.title}", post_url(@comment.post) %>
+
+<%= render 'form' %>

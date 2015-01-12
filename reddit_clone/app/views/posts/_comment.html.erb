@@ -1,0 +1,8 @@
+<%= link_to comment.content, comment_url(comment) %>, comment by <%= comment.author.email %>
+<ul>
+<% @all_comments.each do |c2| %>
+  <% if c2.parent_comment_id == comment.id %>
+  <li><%= render 'comment', comment: c2 %></li>
+  <% end %>
+<% end %>
+</ul>
