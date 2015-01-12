@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     resources :posts, only: [:create]
   end
 
-  resources :posts, except: [:create, :index, :destroy]
+  resources :posts, except: [:create, :index, :destroy] do
+    resources :comments, only: [:new]
+  end
+
+  resources :comments, only: [:create]
 
   root to: "sessions#new"
 end

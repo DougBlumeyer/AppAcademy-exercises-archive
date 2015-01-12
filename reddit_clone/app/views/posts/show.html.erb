@@ -7,8 +7,19 @@
 <br>
 Posted by <%=@post.author.email%>
 <br>
+Associated Subforums:
+<% @post.subs.each do |sub| %>
+  <br>
+  <%= link_to sub.title, sub_url(sub) %>
+<% end %>
+<br>
+Comments:
+<% @post.comments.each do |comment| %>
+  <br>
+  <%= comment.content %>, comment by <%= comment.author.email %>
+<% end %>
 <% if @post.author == current_user %>
 <%= button_to "Edit Post", edit_post_url(@post), method: :get %>
 <% end %>
 <br>
-<%= link_to "<< Return to Subforum #{@post.sub.title}", sub_url(@post.sub) %>
+<%= render "comments/form" %>

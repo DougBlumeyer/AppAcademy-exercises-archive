@@ -1,0 +1,14 @@
+<form action="<%=comments_url%>" method="POST">
+  <input type="hidden"
+    name="authenticity_token"
+    value="<%=form_authenticity_token%>">
+
+  <label>Content:
+  <input name="comment[content]">
+  </label>
+
+  <input type="hidden" name="comment[post_id]" value=<%= @post.id %> >
+
+  <input type="submit" value="Add Comment">
+
+</form>

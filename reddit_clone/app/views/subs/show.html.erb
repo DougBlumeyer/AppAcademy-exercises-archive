@@ -11,9 +11,9 @@ All Posts:
 <% end %>
 </ul>
 
+
 <br>
 <%= render 'posts/new' %>
-
 <% if logged_in? && @sub.moderator_id == current_user.id %>
 <br>
 <%= link_to "Edit this sub", edit_sub_url(@sub) %>
