@@ -15,9 +15,13 @@ Associated Subforums:
 <br>
 Comments:
 <ul>
-<% @comments_by_parent_id[nil].each do |comment| %>
+<% @comments_by_parent_id[nil].sort { |a, b| b.score <=> a.score }.each do |comment| %>
   <br>
-    <li><%= render 'comment', comment: comment %></li>
+    <li>
+      <%= button_to "Upvote", upvote_comment_url(comment) %>
+      <%= button_to "Downvote", downvote_comment_url(comment) %>
+      <%= render 'comment', comment: comment %>
+    </li>
 <% end %>
 </ul>
 <% if @post.author == current_user %>

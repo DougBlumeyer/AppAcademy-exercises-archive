@@ -6,8 +6,12 @@
 <br>
 All Posts:
 <ul>
-<% @sub.posts.each do |post| %>
-  <li><%= link_to post.title, post_url(post) %></li>
+<% @sub.posts.sort { |a, b| b.score <=> a.score }.each do |post| %>
+  <li>
+    <%= button_to "Upvote", upvote_post_url(post) %>
+    <%= button_to "Downvote", downvote_post_url(post) %>
+    <%= link_to post.title, post_url(post) %>, score: <%= post.score %>
+  </li>
 <% end %>
 </ul>
 

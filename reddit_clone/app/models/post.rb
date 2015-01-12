@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
   has_many :subs, through: :post_subs, source: :sub
   has_many :post_subs
   has_many :comments
+  has_many :votes, as: :votable
 
   def comments_by_parent_id
     @comments_by_parent_id = Hash.new { |h,k| h[k] = [] }
@@ -15,5 +16,9 @@ class Post < ActiveRecord::Base
     end
 
     @comments_by_parent_id
+  end
+
+  def score
+    votes.map(&:value).inject(:+) || 0 
   end
 end

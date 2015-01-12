@@ -1,8 +1,12 @@
-<%= link_to comment.content, comment_url(comment) %>, comment by <%= comment.author.email %>
+<%= link_to comment.content, comment_url(comment) %>, comment by <%= comment.author.email %>, score: <%= comment.score %>
 <ul>
-<% @comments_by_parent_id[comment.id].each do |c2| %>
+<% @comments_by_parent_id[comment.id].sort { |a, b| b.score <=> a.score }.each do |c2| %>
   <% if c2.parent_comment_id == comment.id %>
-  <li><%= render 'comment', comment: c2 %></li>
+  <li>
+    <%= button_to "Upvote", upvote_comment_url(c2) %>
+    <%= button_to "Downvote", downvote_comment_url(c2) %>
+    <%= render 'comment', comment: c2 %>
+  </li>
   <% end %>
 <% end %>
 </ul>
