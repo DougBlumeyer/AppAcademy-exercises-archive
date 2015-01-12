@@ -1,9 +1,14 @@
-<h1>Create a new Post for @post.sub.title</h1>
+<br>
+Add a New Post
 
-<form action="<%=posts_url%>" method="POST" >
+<form action="<%=sub_posts_url(@sub)%>" method="POST" >
   <input type="hidden"
     name="authenticity_token"
     value="<%=form_authenticity_token%>">
+
+  <input type="hidden"
+    name="post[sub_id]"
+    value=<%= @sub.id %> >
 
   <br>
   <label for="post_title">Title</label>

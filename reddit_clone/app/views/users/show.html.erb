@@ -1,5 +1,5 @@
-Welcome <%=@user.email%>
-
+<h1>Welcome <%=@user.email%></h1>
+<br>
 Your posts:
 <ul>
   <% @user.moderated_subs.each do |sub| %>
@@ -9,4 +9,4 @@ Your posts:
 
 <%= link_to "See all subs", subs_url %>
 <br>
-<%= link_to "Create new sub", new_user_sub_url(@user) %>
+<%= link_to "Create new sub", new_sub_url(@user) %>

@@ -48,4 +48,5 @@ group :development, :test do
   gem 'bcrypt'
   gem 'letter_opener'
   gem 'binding_of_caller'
+  gem 'rest-client'
 end

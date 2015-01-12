@@ -1,1 +1,14 @@
-<h1> @post.title </h1>
+<h1> <%=@post.title%> </h1>
+
+<br>
+<%=@post.url%>
+<br>
+<%=@post.content%>
+<br>
+Posted by <%=@post.author.email%>
+<br>
+<% if @post.author == current_user %>
+<%= button_to "Edit Post", edit_post_url(@post), method: :get %>
+<% end %>
+<br>
+<%= link_to "<< Return to Subforum #{@post.sub.title}", sub_url(@post.sub) %>
