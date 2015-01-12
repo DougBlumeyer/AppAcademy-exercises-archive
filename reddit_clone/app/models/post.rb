@@ -6,4 +6,14 @@ class Post < ActiveRecord::Base
   has_many :subs, through: :post_subs, source: :sub
   has_many :post_subs
   has_many :comments
+
+  def comments_by_parent_id
+    @comments_by_parent_id = Hash.new { |h,k| h[k] = [] }
+
+    comments.each do |comment|
+      @comments_by_parent_id[comment.parent_comment_id] << comment
+    end
+
+    @comments_by_parent_id
+  end
 end

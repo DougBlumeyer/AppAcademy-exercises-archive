@@ -15,11 +15,9 @@ Associated Subforums:
 <br>
 Comments:
 <ul>
-<% @all_comments.each do |comment| %>
+<% @comments_by_parent_id[nil].each do |comment| %>
   <br>
-  <% if comment.parent_comment_id.nil? %>
     <li><%= render 'comment', comment: comment %></li>
-  <% end %>
 <% end %>
 </ul>
 <% if @post.author == current_user %>
