@@ -6,12 +6,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.author_id = current_user.id
+    #@post = Post.new(post_params)
+    #@post.author_id = current_user.id
+    #fail
+    @post = current_user.posts.new(post_params)
     if @post.save
+      #@post.sub_ids = params[:post][:sub_ids]
       redirect_to post_url(@post)
     else
-      render :new
+      flash[:errors] = @post.errors.full_messages
+      redirect_to user_url(current_user)
     end
   end
 
@@ -36,7 +40,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :url, :content, :sub_id)
+    params.require(:post).permit(:title, :url, :author_id, :content, sub_ids: [])
   end
 
   def only_correct_user!

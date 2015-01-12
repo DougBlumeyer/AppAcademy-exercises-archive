@@ -6,9 +6,23 @@ Add a New Post
     name="authenticity_token"
     value="<%=form_authenticity_token%>">
 
-  <input type="hidden"
+  <!--<input type="hidden"
     name="post[sub_id]"
-    value=<%= @sub.id %> >
+    value=<%#= @sub.id %> >-->
+
+  <br>
+  Post to which Subs?
+  <% @subs.each do |this_sub| %>
+    <br>
+    <label><%=this_sub.title%>
+    <input type="checkbox"
+      name="post[sub_ids][]"
+      value=<%= this_sub.id %>
+      <%= "checked" if this_sub.id == @sub.id %>
+    >
+    </label>
+  <% end %>
+
 
   <br>
   <label for="post_title">Title</label>

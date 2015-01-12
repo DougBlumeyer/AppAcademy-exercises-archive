@@ -13,6 +13,7 @@ class SubsController < ApplicationController
 
   def show
     @sub = Sub.find(params[:id])
+    @subs = Sub.all
   end
 
   def new

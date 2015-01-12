@@ -1,4 +1,4 @@
-<% form_action = sub.persisted? ? sub_url(sub) : subs_url %>
+<% form_action = sub.persisted? ? sub_url(sub) : user_subs_url(current_user) %>
 <% form_method = sub.persisted? ? "PATCH" : "POST" %>
 <% submit_message = sub.persisted? ? "Update sub" : "Create Sub!" %>
 
