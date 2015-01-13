@@ -1,0 +1,27 @@
+Add a New Goal
+
+<form action="<%=goals_url%>" method="POST" >
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+  <br>
+  <label>Title
+    <input type="text" name="goal[title]" value="">
+  </label>
+
+  <br>
+  <label>Description
+    <textarea name="goal[description]" value=""></textarea>
+  </label>
+
+  <br>
+  <label for='goal_private_false'>Public
+    <input type="radio" id='goal_private_false' name="goal[private]" value="false" checked >
+  </label>
+
+  <label for='goal_private_true'>Private
+    <input type="radio" id='goal_private_true' name="goal[private]" value="true">
+  </label>
+
+  <br>
+  <input type="submit" name="" value="Add New Goal">
+</form>

@@ -1,0 +1,21 @@
+
+<h3><%= @user.username %>'s Goals!</h3>
+
+<ul>
+  <% @user.incomplete_goals.each do |goal| %>
+  <% unless current_user != @user && goal.private %>
+  <li><%= link_to goal.title, goal_url(goal)%>, Incomplete</li>
+  <% end %>
+  <br>
+  <% end %>
+
+<% @user.completed_goals.each do |goal| %>
+  <% unless current_user != @user && goal.private %>
+    <li><%= link_to goal.title, goal_url(goal)%>, Complete!</li>
+  <% end %>
+  <br>
+<% end %>
+</ul>
+
+<br>
+<%= render 'goals/new', user: @user %>

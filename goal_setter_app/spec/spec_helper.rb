@@ -89,3 +89,28 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def login_test_user
+  user = create(:user)
+  visit new_session_url
+  fill_in ('Username'), with: user.username
+  fill_in ('Password'), with: user.password
+  click_on "Log In!"
+  user
+end
+
+def test_goal_public(user)
+  goal = build(:goal)
+  goal.private = false
+  goal.user_id = user.id
+  goal.save
+  goal
+end
+
+def test_goal_private(user)
+  goal = build(:goal)
+  goal.private = true
+  goal.user_id = user.id
+  goal.save
+  goal
+end
