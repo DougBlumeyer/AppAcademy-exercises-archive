@@ -8,4 +8,11 @@
   <%= button_to "Check Complete!", complete_goal_url(@goal), method: :patch %>
 <% end %>
 
+<ul>
+<% @goal.comments.each do |comment| %>
+  <li><%= comment.body %></li>
+<% end %>
+</ul>
+<%= render 'comments/form' %>
+
 <%= link_to "<< Return to all goals list", user_url(@goal.user) %>

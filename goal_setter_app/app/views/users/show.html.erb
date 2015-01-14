@@ -17,5 +17,13 @@
 <% end %>
 </ul>
 
+
+<ul>
+<% @user.comments.each do |comment| %>
+<li><%= comment.body %></li>
+<% end %>
+</ul>
+<%= render 'comments/form' %>
+
 <br>
 <%= render 'goals/new', user: @user %>

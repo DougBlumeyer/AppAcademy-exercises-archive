@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :goals, inverse_of: :user
 
+  include Commentable
+
   def is_password?(password)
     BCrypt::Password.new(password_digest).is_password?(password)
   end

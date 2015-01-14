@@ -6,4 +6,6 @@ Rails.application.routes.draw do
       patch 'complete'
     end
   end
+
+  resources :comments, only: [:create]
 end

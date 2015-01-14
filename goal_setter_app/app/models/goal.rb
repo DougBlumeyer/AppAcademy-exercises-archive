@@ -3,4 +3,6 @@ class Goal < ActiveRecord::Base
   validates :title, uniqueness: { scope: :user_id}
 
   belongs_to :user
+
+  include Commentable
 end
