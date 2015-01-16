@@ -1,5 +1,5 @@
 Array.prototype.bubbleSort = function () {
-  unsorted = true;
+  var unsorted = true;
   while (unsorted) {
     unsorted = false;
     for (i = 0; i < this.length - 1; i++) {

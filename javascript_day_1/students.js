@@ -17,7 +17,7 @@ Student.prototype.enroll = function (course) {
   };
   if (includes === false && !this.hasConflict(course)) {
     this.courses.push(course);
-    course.students.push(this);
+    course.addStudent(this);
   }
 }
 
