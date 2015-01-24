@@ -1,0 +1,36 @@
+/* PHASE 3: Layout */
+.content {
+  width: 900px;
+  margin: 0 auto;
+  position: relative;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background: white;
+}
+
+.content-sidebar {
+  float: left;
+  height: 200px;
+  width: 200px;
+  padding: 20px;
+}
+
+.content-main {
+  float: right;
+  height: 200px;
+  width: 600px;
+  padding: 20px;
+}
+
+.content:before {
+  content: ""; /* why this needed for border to appear? */
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 240px;
+  width: 1px;
+  background: #ccc;
+  /*why do we do a background rather than borderline on main or side*/
+}

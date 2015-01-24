@@ -1,0 +1,36 @@
+/* PHASE 4: Footer */
+.footer {
+  width: 900px;
+  color: #aaa;
+  background: white;
+  margin: 0 auto 50px auto;
+  font-size: 14px;
+  display: block;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.copyright {
+  padding: 20px;
+  float: left;
+  display: block;
+}
+
+.footer-nav {
+  padding: 20px;
+  display: block;
+  float: right;
+  list-style: none;
+}
+
+.footer-nav li {
+  float: left;
+  padding: 0 0 0 20px;
+}
+
+.footer-nav a:hover {
+  color: black;
+}
