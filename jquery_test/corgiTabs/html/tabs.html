@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>My Cool Website</title>
+    <script src="../../shared/jquery-2.1.3.min.js"></script>
+    <script src="../js/tabs.js"></script>
+    <link href="../css/tabs.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../shared/cssreset-min.css">
+  </head>
+
+  <body>
+    <ul class='tabs' data-content-tabs='#content-tabs'>
+      <li><a href='#pug' class="active">Pug</a></li>
+      <li><a href='#swedish-valhund'>Swedish Valhund</a></li>
+      <li><a href='#dachshund'>Dachshund</a></li>
+    </ul>
+    <div id='content-tabs'>
+      <div class='tab-pane active' id='pug'>
+        <p>
+          Information about pugs.
+        </p>
+      </div>
+      <div class='tab-pane' id='swedish-valhund'>
+        <p>
+          Information about Swedish valhunds.
+        </p>
+      </div>
+      <div class='tab-pane' id='dachshund'>
+        <p>
+          Information about dachshunds.
+        </p>
+      </div>
+    </div>
+    <script>
+      $(function() {
+        $('.tabs').tabs();
+      })
+    </script>
+  </body>
+
+</html>

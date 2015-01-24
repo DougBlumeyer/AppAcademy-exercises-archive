@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Thumbnails</title>
+    <script src="../../shared/jquery-2.1.3.min.js"></script>
+    <script src="../js/thumbnail.js"></script>
+    <link href="../css/thumbnail.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../shared/cssreset-min.css">
+  </head>
+  <body>
+    <div class="thumbnails">
+      <div class="active">
+      </div>
+
+      <div class="gutter group">
+        <a href="javascript:void(0)" class="nav" id="left">&lt;</a>
+        <div class="gutter-images">
+          <img src="../assets/001.png"></img>
+          <img src="../assets/002.png"></img>
+          <img src="../assets/003.png"></img>
+          <img src="../assets/004.png"></img>
+          <img src="../assets/005.png"></img>
+          <img src="../assets/006.png"></img>
+          <img src="../assets/007.png"></img>
+          <img src="../assets/008.png"></img>
+          <img src="../assets/009.png"></img>
+          <img src="../assets/012.png"></img>
+          <img src="../assets/025.png"></img>
+          <img src="../assets/051.png"></img>
+          <img src="../assets/054.png"></img>
+          <img src="../assets/079.png"></img>
+          <img src="../assets/094.png"></img>
+          <img src="../assets/108.png"></img>
+          <img src="../assets/109.png"></img>
+          <img src="../assets/124.png"></img>
+          <img src="../assets/143.png"></img>
+        </div>
+        <a href="javascript:void(0)" class="nav" id="right">&gt;</a>
+      </div>
+    </div>
+
+    <script>
+      $(function() {
+        $('.thumbnails').thumbnail();
+      })
+    </script>
+  </body>
+</html>
