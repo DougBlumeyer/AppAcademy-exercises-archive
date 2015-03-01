@@ -9,6 +9,8 @@ describe Deck do
   let(:card_1)   { double("card_1")   }
   let(:card_2)   { double("card_2")   }
 
+  let(:game)     { double("game")     }
+
   context "#initialize" do
 
     it "has 4 cards of each value" do
@@ -43,17 +45,15 @@ describe Deck do
       expect(deck.cards.first).not_to eq(top_card)
     end
 
-    it "receives cards back from players to its bottom" do
-      bottom_card = deck.cards.last.dup
-      allow(player_1).to receive(:hand)
-      allow(player_1).to receive(:hand=)
+    it "receives cards back from players to its bottom"
+    # do
+    #   bottom_card = deck.cards.last
+    #   allow(deck).to receive(:return) { card_1 }
+    #   expect(deck.cards.last).not_to eql(bottom_card)
+    # end
 
-      #deck.switch_cards(player_1, [card_1, card_2])
-      deck.return()
-      expect(deck.cards.last).not_to eq(bottom_card)
-    end
-
-    # it "shuffles before every round" do
+    it "shuffles before every round"
+    # do
     #   game.begin_round
     #   expect(deck.cards).not_to eq(deck.cards.sort { |card1, card2| card1.value <=> card2.value })
     # end

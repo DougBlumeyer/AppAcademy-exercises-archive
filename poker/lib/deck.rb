@@ -20,11 +20,6 @@ class Deck
     player.hand = cards.shift(5)
   end
 
-  # def switch_cards(player, returned_cards)
-  #   player.hand.concat(cards.shift(returned_cards.length))
-  #   cards.concat(returned_cards)
-  # end
-
   def take(n)
     cards.shift(n)
   end

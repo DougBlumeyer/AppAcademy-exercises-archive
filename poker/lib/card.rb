@@ -6,6 +6,10 @@ class Card
     @value = value
   end
 
+  def inspect
+    "#{suit}/#{value}"
+  end
+
   SUIT_SYMBOLS = {  S: "♠",
                     C: "♣",
                     H: "♥",

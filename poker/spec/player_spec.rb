@@ -2,12 +2,12 @@ require 'player.rb'
 
 describe Player do
 
-  subject(:player) {Player.new("Evil Doug", 9999999)}
+  subject(:player) {Player.new(double("game"), double("deck"), "Evil Doug", 99)}
 
   context "#initialize" do
 
     it "sets bankroll" do
-      expect(player.bankroll).to eq(9999999)
+      expect(player.bankroll).to eq(99)
     end
 
     it "has a name" do
