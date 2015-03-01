@@ -22,6 +22,7 @@ $statuses = [
 class StatusesController < Phase6::ControllerBase
   def index
     statuses = $statuses.select do |s|
+      #debugger
       s[:cat_id] == Integer(params[:cat_id])
     end
 
@@ -43,6 +44,7 @@ end
 
 server = WEBrick::HTTPServer.new(Port: 3000)
 server.mount_proc('/') do |req, res|
+  #debugger
   route = router.run(req, res)
 end
 

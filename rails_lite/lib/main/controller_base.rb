@@ -46,7 +46,6 @@ class ControllerBase
   end
 
   def invoke_action(name)
-    #debugger
     self.send(name)
     render(name) unless already_built_response?
   end

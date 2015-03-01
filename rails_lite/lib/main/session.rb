@@ -4,18 +4,17 @@ require 'webrick'
 class Session
 
   def initialize(req)
-    @session = {}
     cookie = req.cookies.find { |c| c.name == '_rails_lite_app' }
     @data = cookie ? JSON.parse(cookie.value) : {}
-    @data.each { |k,v| self[k] = v }
+    #@data.each { |k,v| self[k] = v }
   end
 
   def [](key)
-    @session[key]
+    @data[key]
   end
 
   def []=(key, val)
-    @session[key] = val
+    @data[key] = val
   end
 
   def store_session(res)

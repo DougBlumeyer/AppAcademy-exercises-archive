@@ -16,9 +16,18 @@ module Phase6
     # use pattern to pull out route params (save for later?)
     # instantiate controller and call controller action
     def run(req, res)
-      regex = Regexp.new '/\w+/(?<id>\d+)'
-      match_data = regex.match(req.path)
-      params = match_data ? { "id" => match_data[:id] } : {}
+      #regex = Regexp.new '/(?<param_key>\w+)/(?<id>\d+)'
+      #match_data = regex.match(req.path)
+      match_data = pattern.match(req.path)
+      #params = match_data ? { "#{match_data[:param_key].singularize}_id".to_sym => match_data[:id] } : {}
+      #debugger
+      #params = match_data.length > 1 ? { "id" => match_data[:id] } : {}
+      params = {}
+      match_data.to_a.drop(1).each_with_index do |md, idx|
+        #params[match_data.names[idx].to_sym] = md
+        params[match_data.names[idx]] = md
+      end
+      #debugger
       controller_class.new(req, res, params).invoke_action(action_name)
     end
   end
@@ -62,7 +71,7 @@ module Phase6
     # either throw 404 or call run on a matched route
     def run(req, res)
       route_to_run = match(req)
-      p route_to_run
+      #p route_to_run
       route_to_run ? route_to_run.run(req, res) : res.status = 404
     end
   end
